@@ -1,0 +1,86 @@
+.bubble-content {
+    position: relative;
+    margin: 40px auto;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    width: 80%;
+    color: #fff0d7;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: 2s all;
+    transform: scale(1);
+    transition: all 1.5s;
+    overflow: hidden;
+    /* border: 3px solid white; */
+    white-space: nowrap;
+    box-shadow: 0px 0px 5px white;
+    animation: fade-in 3s; 
+}
+
+.bubble-content__label {
+    text-align: center;
+    vertical-align: baseline;
+    margin: 0 auto;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.bubble-content:hover {
+    transform: scale(1.1);
+    transform-origin: top;
+    filter: drop-shadow(0px 0px 2.5px rgb(255, 255, 255));
+} 
+
+.bubble-content::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-origin: top;
+    transform: translateY(-100%);
+    border-radius: 0% 0% 50% 50%;
+    transition: all 1s;
+    z-index: -1;
+    background-image:linear-gradient(to bottom right, rgb(219, 167, 54), rgb(145, 120, 67));
+    
+}
+.bubble-content:hover::after {
+    border-radius: 0%;
+    transform: translateY(0%);
+    opacity: .5;
+} 
+
+
+@keyframes fade-in {
+    from{
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+.border-design{
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px white;
+}
+
+.bubble-group {
+    position: relative;
+    /* padding: 80px 0px; */
+    width: 50%;
+    margin: 40px auto;
+    overflow: hidden;
+    animation: fade-in 3s;
+}
+
+.bubble-content__description {
+    
+}
