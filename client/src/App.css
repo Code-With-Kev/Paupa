@@ -1,18 +1,32 @@
 .App {
-    text-align: center;
+    /* text-align: center; */
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
+    font-size: 100%;
 }
 
 body {
     background-image: linear-gradient(to bottom right, #009bf8, #fff0d7);
+    /* THE HEIDI background-image: linear-gradient(to bottom right, #d9a3db, #f0c6ad); */
+
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
     min-height: 100vh;
     padding-left: 8%;
     padding-right: 8%;
+    padding-bottom: 2.5%;
+    padding-top: 1.5%;
     box-sizing: border-box;
-    overflow: hidden
+}
+
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 5px solid white;
+    background-color: red;
 }

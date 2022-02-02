@@ -1,0 +1,243 @@
+.form-section{
+    border:none;
+    display: flex;
+    justify-content: start;
+    align-content: center;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.create-form {
+    text-decoration: none; /*removes the underline from link*/
+    color: #fff0d7;
+    font-family: sans-serif;
+    padding: 40px 80px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+    font-weight: bold;
+    transition: all 1s;/*for text to change color*/
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 400px;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px white;
+    width: 50%;
+    animation: fade-right 3s;
+}
+
+.create-form:before{
+    content: ''; /*leaves it blank*/
+    position: absolute;
+    left: 0; /*pins it to the left corner*/
+    top: 0; /* pins to the the top*/
+    background-color: #095f86; /*what we want to fill button*/
+    height: 100%; /*so it will fit button perfectly*/
+    width: 100%;
+    /*Right now, yellow is covering the text underneath. Let's move it!*/
+    z-index: -1; /*now text is back*/
+    transform-origin: left; /*anchor point of the action*/
+    transform: translate(-100%); /*first keypoint*/
+    transition: all 1s; /*length b/w keypoint*/
+    opacity: .3
+}
+
+.create-form:hover:before {
+    transform: translate(0%); /* last keypoint/this will return it to its original horizontal position*/
+}
+
+.create-form:hover{
+    color:white;
+}
+
+.input {
+    margin-left: 10px;
+}
+
+label {
+    font-size: 1.7rem;
+}
+
+.errors {
+    margin-bottom: 15px;
+}
+
+input[type="select"] {
+    width: 60%
+}
+
+input[type="submit"]{
+    text-decoration: none; 
+    color: white;
+    font-family: roboto;
+    font-size: 45px;
+    width: 100%;
+    height: fit-content;
+    border: none;
+    padding: 40px 80px;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0;
+    transform: scale(1);
+    transition: all .8s;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px white;
+    background-color: transparent;
+    z-index: 200
+}
+
+ input[type="submit"]::before{
+    content: 'COMPLETED!!!';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transform-origin: top;
+    transition: all 1s;
+}
+
+
+input[type="submit"]:hover::before{
+    content: 'COMPLETED!!!';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(0%);
+    background-color: rgb(99, 206, 11);
+} 
+
+.form-button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-inputs{
+    flex:2;
+}
+
+@keyframes fade-right {
+    from{
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+    .dark-mode{
+        background: none;
+        border: none;
+        border-radius: 12px;
+        box-shadow: 0px 0px 5px white;
+        color: white;
+        animation: fade-right 3s;
+    }
+
+    .dark-mode:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:linear-gradient(to bottom right,  #262626, rgb(20, 19, 19));
+        transition: 1s;
+        transform: rotateX(90deg);
+        z-index: -1;
+    }
+    .dark-mode:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:linear-gradient(to bottom right,  #262626, rgb(20, 19, 19));
+        transition: 1s;
+        transform: rotateY(90deg);
+        z-index: -1;
+    }
+
+    .dark-mode:hover::before {
+        transform: rotateX(0deg);
+    }
+    
+    .dark-mode:hover::after {
+        transform: rotateY(0deg);
+    }
+    
+    .dark-mode:hover {
+        color: white;
+    }
+
+    .expand-button {
+        text-decoration: none; 
+        color: #fff0d7;
+        font-family: sans-serif;
+        font-size: 45px;
+        border: none;
+        padding: 40px 80px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        border-radius: 12px;
+        box-shadow: 0px 0px 5px white;
+        width: 10%;
+        margin: 0 auto;
+        font-weight: bold;
+        letter-spacing: 0px;
+        transition: all 1s;
+        white-space: nowrap;
+        animation: fade-right 3s;
+
+    }
+    
+    .expand-button:before{
+        content: ''; 
+        position: absolute;
+        left: 0; 
+        top: 0; 
+        background-image: linear-gradient(to bottom, rgb(58, 58, 163), rgb(160, 33, 160)); /*what we want to fill button*/
+        height: 100%; 
+        width: 100%;
+        z-index: -1; 
+        transform-origin: center;
+        transform: scale(0); 
+        transition: transform 1s; 
+        opacity: .3
+    }
+    
+    .expand-button:hover:before {
+        transform: scale(1); /* last keypoint/this will return it to its original horizontal position*/
+    }
+
+    .expand-button:hover {
+        letter-spacing: 3px;
+    }

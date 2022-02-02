@@ -4,29 +4,34 @@ const bubbleSchema = new mongoose.Schema({
     label: {
         type: String,
         required: [true, "A label is required"],
+        maxlength: [35, "Label must be under 35 characters"]
     },
     priority: {
         type: String,
-        required: [true, "A priority rating is required"],
+        default: "Low"
     },
     description: {
         type: String,
-        maxlength : [160, "Description must be at least 3 characters"],
+        maxlength : [50, "Description must be less than 50 characters"],
     },
     startDate: {
         type: Date,
-        min: Date.now(),
-        validate: [(value) => {this.endDate >= value, 'End Date cannot be after Start Date'}]
     },
     endDate: {
         type: Date,
-        validate: [(value) => this.startDate <= value, 'Start Date cannot be after End Date']
     },
-}, {timestamps: true});
+    isExpense: {
+        type: Boolean,
+        default: false,
+        required: [true, "We must know if this is an expense"]
+    },
+    cost: {
+        type: Number,
+        default: 1,
+    }
+}, {timestamp: { type: Date, default: Date.now},});
 
 
 const Bubble = mongoose.model('Bubble', bubbleSchema)
 
 module.exports = Bubble
-
-// figure out how to set default value to zero

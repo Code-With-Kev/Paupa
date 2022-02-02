@@ -9,11 +9,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     flex-direction: column;
     transition: 2s all;
     transform: scale(1);
     transition: all 1.5s;
     overflow: hidden;
+    font-style: italic;
+    font-weight: bold;
     /* border: 3px solid white; */
     white-space: nowrap;
     box-shadow: 0px 0px 5px white;
@@ -21,16 +24,17 @@
 }
 
 .bubble-content__label {
-    text-align: center;
     vertical-align: baseline;
     margin: 0 auto;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: bold;
 }
 
+
 .bubble-content:hover {
     transform: scale(1.1);
-    transform-origin: top;
+    transform-origin: center;
+    color: white;
     filter: drop-shadow(0px 0px 2.5px rgb(255, 255, 255));
 } 
 
@@ -47,8 +51,9 @@
     transition: all 1s;
     z-index: -1;
     background-image:linear-gradient(to bottom right, rgb(219, 167, 54), rgb(145, 120, 67));
-    
+    filter: brightness(.7);
 }
+
 .bubble-content:hover::after {
     border-radius: 0%;
     transform: translateY(0%);
@@ -72,6 +77,8 @@
     box-shadow: 0px 0px 5px white;
 }
 
+
+
 .bubble-group {
     position: relative;
     /* padding: 80px 0px; */
@@ -81,6 +88,184 @@
     animation: fade-in 3s;
 }
 
+.more-detail{
+    height: 150px
+}
+
+.date-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
 .bubble-content__description {
+    font-size: 1.3rem;
+}
+
+/* opacity fades with you enter container*/
+.bubble-container > div {
+    opacity: 1;
+    transition: .6s all ;
+}
+
+.bubble-container:hover > div {
+    opacity: .5
+}
+
+.bubble-container:hover > div:hover {
+    opacity: 1
+}
+
+.high {
+    /* box-shadow: 0px 0px 10px rgb(228, 5, 153); */
+    border: 10px solid black,
+}
+.medium {
+    box-shadow: 0px 0px 10px rgb(62, 102, 189);
+    border: 10px solid black,
+
+}
+.low {
+    box-shadow: 0px 0px 10px aqua;
+    border: 10px solid black,
+
+}
     
+
+
+/* button {
+    width: fit-content;
+    font-size: 20pt;
+    padding: 10px 15px;
+    border-style: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: bolder;
+    background-color: transparent;
+    box-shadow: 0px 0px 5px rgb(243, 9, 99);
+} */
+
+/*
+.delete-btn {
+    text-decoration: none; removes the underline from link*/
+    /* color: #272727;
+    font-family: sans-serif;
+    font-size: 45px;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px white;
+    padding: 40px 80px;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s;
+}
+
+.delete-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgb(0, 255, 170), lightblue);
+    transition: 2s;
+    transform: rotateX(90deg);
+    z-index: -1;
+} */
+/* Just copy/paste and change the rotateX to rotateY */
+/* .delete-btn:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, rgb(0, 255, 170), lightblue);
+    transition: 2s;
+    transform: rotateY(90deg);
+    z-index: -1;
+}
+
+.delete-btn:hover::before {
+    transform: rotateX(0deg);
+}
+
+.delete-btn:hover::after {
+    transform: rotateY(0deg);
+}
+
+.delete-btn:hover {
+    color: white;
+    letter-spacing: 5px;
+    text-align: center;
+} */
+
+.delete-btn{
+    text-decoration: none; 
+    color: yellow;
+    font-family: roboto;
+    font-size: 45px;
+    padding: 40px 80px;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0;
+    transform: scale(1);
+    transition: all .8s;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px white;
+}
+
+ .delete-btn::before{
+    content: 'COMPLETED!!!';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    transform-origin: top;
+    transition: all 1s;
+}
+
+
+.delete-btn:hover::before{
+    content: 'COMPLETED!!!';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(0%);
+    background-image: linear-gradient(to bottom, rgb(105, 197, 105), rgb(81, 81, 175));
+    opacity: 1;
+} 
+
+
+
+.description-price {
+    display: flex;
+    justify-content: space-around;
+    margin: 0px auto;
+    padding: 0;
+    align-items: center;
+    width: 80%;
+    height: max-content;
+    flex-direction: row;
+}
+
+.expense-amount {
+    font-size: 4rem;
 }

@@ -1,0 +1,45 @@
+.nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: min-content;
+    padding: 10px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    color: #fff0d7;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 70px;
+}
+
+.p1{
+    animation: nav-fade-left 3s;
+}
+
+.p2{
+    animation: nav-fade-right 3s;
+}
+
+
+
+@keyframes nav-fade-left {
+    from{
+        transform: translateX(-30px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes nav-fade-right {
+    from{
+        transform: translateX(30px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
