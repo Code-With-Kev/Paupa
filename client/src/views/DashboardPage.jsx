@@ -3,30 +3,28 @@ import AllBubbles from '../components/Bubble/AllBubbles'
 import './DashboardPage.css';
 import CreateBubbleForm from '../components/Bubble/CreateBubbleForm';
 import axios from 'axios'
-import { useHistory } from 'react-router-dom';
 
 
 const DashboardPage = (props) => {
     const[expandForm, setExpandForm] = useState(false)
     const [loggedInUser, setLoggedInUser] = useState(null)
-    const history = useHistory()
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/loggedin", {withCredentials:true})
     .then(res => {
-        console.log("hi")
         setLoggedInUser(res.data.user)
-        history.push('/')
     })
     .catch(err => {
         console.log(err)
-    }, [loggedInUser]) //loggedInUser
-})
-    console.log(loggedInUser)
+    })
+    }, [] )
+    
     return (
         <div>
             <div className="welcome">
-                {loggedInUser && <h1>Welcome back, {loggedInUser.username}</h1>}
+                { 
+                <div>{loggedInUser && <h1>Welcome back, {loggedInUser.username}</h1>}</div>
+                }
             </div>
             <div>
                 {
@@ -39,10 +37,15 @@ const DashboardPage = (props) => {
                     />:
                 <p onClick={e=>setExpandForm(!expandForm)} className="expand-button">Add Paup</p>
                 }
+                {/* <button className="dark-mode">Dark Mode</button> */}
                 <div>
-                    <AllBubbles formSubmitted={props.formSubmitted}/>
+                    <div>
+                        <p>?</p>
+                    </div>
+                    <div>
+                        <AllBubbles formSubmitted={props.formSubmitted}/>
+                    </div>
                 </div>
-                <button className="dark-mode">Dark Mode</button>
             </div>
         </div>
     )

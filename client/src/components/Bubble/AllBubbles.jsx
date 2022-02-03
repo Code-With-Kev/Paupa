@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import './AllBubbles.css'
 import BubbleDate from './BubbleDate';
-// import ExpensesMonths from './ExpensesMonths';
+import BarChart from '../UI/BarChart'; 
 
 const AllBubbles = (props) => {
     const [allBubbles, setAllBubbles] = useState([]);
@@ -16,6 +16,9 @@ const AllBubbles = (props) => {
         .then(res=> {
             console.log("All bubbles --->", res);
             setAllBubbles(res.data.results)
+            for (let bubble of res.data.results) {
+                console.log("this is the cost --->", bubble.cost)
+            }
         })
         .catch(err=>err)
 }, [showInfo, props.formSubmitted, deleted])
@@ -78,7 +81,8 @@ const AllBubbles = (props) => {
                                             <div className='date-container'>
                                                 <p><BubbleDate date={bubble.startDate} title="Start Date"/></p>
                                                 <p><BubbleDate date={bubble.endDate} title="End Date"/></p>
-                                                <p class="delete-btn" onClick={(e) => deleteBubbles(e, bubble._id)}>Finished?</p>
+                                                {!bubble.isExpense && <p class="delete-btn" onClick={(e) => deleteBubbles(e, bubble._id)}>Finished?</p>}
+                                                {bubble.isExpense && <p class="delete-expense-btn" onClick={(e) => deleteBubbles(e, bubble._id)}>Remove?</p>}
                                             </div>
                                                             {/*               border color controller               */}
                                         </div>:
@@ -93,7 +97,7 @@ const AllBubbles = (props) => {
                 }
                 </div>
             </div>
-            {/* <ExpensesMonths costs={allBubbles}/> */}
+            <BarChart allBubbles={allBubbles}/>
         </div>
         );
     };

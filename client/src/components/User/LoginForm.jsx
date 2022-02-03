@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import {useHistory} from 'react-router-dom'
 
 const LoginForm = (props) => {
     const [errors, setErrors] = useState([])
@@ -7,7 +8,7 @@ const LoginForm = (props) => {
         email:"",
         password: "",
     });
-    const [loginSubmit, setLoginSubmit] = useState(false)
+    const history = useHistory();
 
     const handleChange = (e) => {
         setFormInfo({
@@ -16,22 +17,20 @@ const LoginForm = (props) => {
         })
     }
 
-
-
     const login = (e) => {
         e.preventDefault();
         axios.post("http://localhost:8000/api/login", formInfo, {withCredentials:true})
         .then(res=>{
             console.log(res)
-            if(res.data.msg){
-                setErrors(res.data.msg)
+            if(res.data.msg === "success!"){
+                history.push('/')
             }else{
-                setLoginSubmit(!loginSubmit)
+                setErrors(res.data.msg)
             }
         })
         .catch(err=> {
             console.log(err)
-        }, [loginSubmit, errors])
+        }, [errors])
     }
 
     return (

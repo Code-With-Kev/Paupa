@@ -18,12 +18,7 @@ function App() {
                     <Route exact path="/">
                         <DashboardPage formSubmitted={formSubmitted} setFormSubmitted={setFormSubmitted}/>
                     </Route>
-                    <Route exact path="/create">
-                    </Route>
-                    <Route exact path="/show/:id">
-                        <BubbleDetails />
-                    </Route>
-                    <Route exact path="/chart">
+                    <Route exact path="/login">
                         <LoginRegistrationPage />
                     </Route>
                     <Route exact path="/jeremy">

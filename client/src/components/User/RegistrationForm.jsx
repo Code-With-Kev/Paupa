@@ -11,7 +11,6 @@ const RegistrationForm = (props) => {
         confirmPassword: "",
     });
     const history = useHistory()
-    const [loginSubmit, setLoginSubmit] = useState(false)
     const [errors, setErrors] = useState([])
 
     const handleChange = (e) => {
@@ -33,7 +32,7 @@ const RegistrationForm = (props) => {
             })
             .catch(err=> {
                 console.log(err)
-            }, [loginSubmit, errors])
+            }, [errors])
             
             setFormInfo({
                 username: "",
