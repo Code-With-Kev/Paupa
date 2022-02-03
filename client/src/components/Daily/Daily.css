@@ -1,0 +1,21 @@
+.checkbox{
+    text-decoration: none; 
+    color: #fff0d7;
+    font-family: sans-serif;
+    font-size: 30px;
+    padding: 40px 40px;
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto;
+    font-weight: bold;
+    transition: all 1s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: fit-content;
+    border-radius: 12px;
+    box-shadow: 0px 0px 5px white;
+    width: 20%;
+    align-content: center;
+    animation: fade-out 3s;
+}

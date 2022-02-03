@@ -6,9 +6,11 @@ import DashboardPage from "./views/DashboardPage";
 import NavBar from "./components/UI/NavBar";
 import BarChart from "./components/UI/BarChart";
 import LoginRegistrationPage from "./views/LoginRegistrationPage";
+import OnlyTasks from "./components/Bubble/OnlyTasks";
 
 function App() {
     const [formSubmitted, setFormSubmitted] = useState(false)
+
 
     return (
         <BrowserRouter>
@@ -23,6 +25,9 @@ function App() {
                     </Route>
                     <Route exact path="/jeremy">
                         <BarChart />
+                    </Route>
+                    <Route exact path="/split">
+                        <OnlyTasks />
                     </Route>
 
                 </Switch>

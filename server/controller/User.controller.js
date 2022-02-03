@@ -36,6 +36,13 @@ class UserController {
             .catch(err => res.json(err))
     }
 
+    logout(req, res){
+        res.cookie("usertoken", jwt.sign({_id:""}, secret), {
+            httpOnly: true,
+            maxAge: 0,
+        }).json({msg})    
+    }
+
     getLoggedInUser(req, res){
         const decodedJWT = jwt.decode(req.cookies.usertoken, {complete: true});
 

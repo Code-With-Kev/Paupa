@@ -3,11 +3,14 @@ import AllBubbles from '../components/Bubble/AllBubbles'
 import './DashboardPage.css';
 import CreateBubbleForm from '../components/Bubble/CreateBubbleForm';
 import axios from 'axios'
+import Daily from '../components/Daily/Daily';
 
 
 const DashboardPage = (props) => {
     const[expandForm, setExpandForm] = useState(false)
     const [loggedInUser, setLoggedInUser] = useState(null)
+    const [switchTab, setSwitchTab] = useState(false)
+    
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/loggedin", {withCredentials:true})
@@ -26,6 +29,8 @@ const DashboardPage = (props) => {
                 <div>{loggedInUser && <h1>Welcome back, {loggedInUser.username}</h1>}</div>
                 }
             </div>
+                <button className="switchTab" onClick={e=>setSwitchTab(!switchTab)}><img className="switch-icon" src={require('../components/UI/Images/switch_icon.png')} /></button>                
+                <button className="switchTab" onClick={}><img className="switch-icon" src={require('../components/UI/Images/switch_icon.png')} /></button>                
             <div>
                 {
                     expandForm === true?
@@ -38,14 +43,9 @@ const DashboardPage = (props) => {
                 <p onClick={e=>setExpandForm(!expandForm)} className="expand-button">Add Paup</p>
                 }
                 {/* <button className="dark-mode">Dark Mode</button> */}
-                <div>
                     <div>
-                        <p>?</p>
+                        <AllBubbles formSubmitted={props.formSubmitted} switchTab={switchTab} setSwitchTab={setSwitchTab}/>
                     </div>
-                    <div>
-                        <AllBubbles formSubmitted={props.formSubmitted}/>
-                    </div>
-                </div>
             </div>
         </div>
     )

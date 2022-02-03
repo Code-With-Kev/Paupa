@@ -46,7 +46,7 @@ const CreateBubbleForm = (props) => {
     return (
         <div className="create-form">
             <form onSubmit={handleSubmit}>
-                <div className="form-inputs">
+                <div className="form-inputs bubble-container bubble-group">
                                                     {/*               form errors                */}
                     {                                               
                         errors?
@@ -99,9 +99,14 @@ const CreateBubbleForm = (props) => {
                     <div className="form-section form-section__date">
                         <label>Start Date</label>
                         <input className="input" type="date"  value={enteredStartDate} onChange={e => setEnteredStartDate(e.target.value)} />
-                        <label className="input">End Date</label>
-                        <input className="input" type="date"  value={enteredEndDate} onChange={e => setEnteredEndDate(e.target.value)} />
-                    </div>
+                        {
+                            enteredIsExpense === false &&
+                        <div>
+                            <label className="input">End Date</label>
+                            <input className="input" type="date"  value={enteredEndDate} onChange={e => setEnteredEndDate(e.target.value)} />
+                        </div>
+                        }
+                        </div>
                 </div>
                 
                                                          {/*              submit                */}

@@ -1,64 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios'
-import './AllBubbles.css'
+import React from 'react'
 import BubbleDate from './BubbleDate';
-import BarChart from '../UI/BarChart'; 
-import OnlyTasks from './OnlyTasks';
-import OnlyExpenses from './OnlyExpenses'
+import './Split.css'
 
-const AllBubbles = (props) => {
-    const [allBubbles, setAllBubbles] = useState([]);
-    const [showInfo, setShowInfo] = useState(false);
-    const [filterID, setFilterID] = useState("");
-    const [deleted, setDeleted] = useState(false);
-    const {switchTab, setSwitchTab} = props
-    const [filter, setFilter] = useState("")
-
-
-    useEffect(()=>{
-        axios.get("http://localhost:8000/api/bubbles")
-        .then(res=> {
-            console.log("All bubbles --->", res);
-            setAllBubbles(res.data.results)
-            for (let bubble of res.data.results) {
-                console.log("this is the cost --->", bubble.cost)
-            }
-        })
-        .catch(err=>err)
-}, [showInfo, props.formSubmitted, deleted, switchTab, filter])
-
-    const handleShowInfo = (e) => {
-        if (showInfo === false){
-            setShowInfo(!showInfo)
-            setFilterID(e)
-        } else {
-            setShowInfo(!showInfo)
-        }
-    }
-
-    function capitalizeLabel(name) {
-        return name.replace(/\b(\w)/g, s => s.toUpperCase());
-    }
-
-    const deleteBubbles = (e, id) => {
-        console.log("deleting item with this id ---->", id)
-        axios.delete(`http://localhost:8000/api/bubbles/${id}`)
-            .then(res => {
-                console.log("deleted --->", res.data.results)
-                setDeleted(!deleted)
-            })
-            .catch(err => console.log("Uh oh --->", err))
-    }
+const OnlyTasks = (props) => {
+    const { allBubbles, filterID, handleShowInfo, capitalizeLabel, deleteBubbles } = props
 
     return (
-        <div>
-            <div>
-                <div className="bubble-container border-design bubble-group">
+        <div className="border-design">
+            <div className="bubble-container" style={{padding: "3em 0em"}}>
+                <div>
 
                                                                 {/*               map of tasks                */}
-                {   
-                    switchTab === false &&
-                    allBubbles.map((bubble, i)=> {
+                { 
+                    allBubbles.filter(bubble => bubble.isExpense === true).map((bubble, i)=> {
                         return (
                                 <div key={i}>
                                     {
@@ -97,29 +51,14 @@ const AllBubbles = (props) => {
                                             </div>
                     }
                                 </div>
+                                
                         )
                     })
                 }
                 </div>
             </div>
-            {
-                switchTab === true &&
-            <div style={{display: "flex", alignItems: "start"}}>
-                <div style={{width: "50%", marginRight: "3em", padding: "3em"}}>
-                    <OnlyTasks allBubbles={allBubbles} filterID={filterID} handleShowInfo={handleShowInfo} capitalizeLabel={capitalizeLabel} BubbleDate={BubbleDate} deleteBubbles={deleteBubbles} />
-                </div>
-                <div style={{width: "50%", padding: "3em"}}>
-                    <OnlyExpenses allBubbles={allBubbles} filterID={filterID} handleShowInfo={handleShowInfo} capitalizeLabel={capitalizeLabel} BubbleDate={BubbleDate} deleteBubbles={deleteBubbles} />
-                </div>
-            </div>
-            }
-            <BarChart allBubbles={allBubbles} filter={filter} setFilter={setFilter}/>
-            
         </div>
         );
     };
 
-    export default AllBubbles
-
-    // Make border change color based on priority
-    // Add a collapse bubble button
+    export default OnlyTasks

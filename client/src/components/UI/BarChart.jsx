@@ -6,18 +6,7 @@ import './BarChart.css'
 Chart.register(...registerables);
 
 function BarChart(props) {
-    const { allBubbles } = props
-
-    //only show months with expenses
-    const monthsWithExpenses = (allBubbles) => {
-        let dateArr = [];
-        for (const bubble of allBubbles) {
-            if(!dateArr.includes(moment(bubble.startDate).format('MMM'))) {
-                dateArr.push(moment(bubble.startDate).format('MMM'))
-            }
-        }
-        return dateArr
-    }
+    const { allBubbles, filter, setFilter } = props
 
     const expensesPerMonth = [ 
         { label: 'Jan', value: 0 },
@@ -39,7 +28,6 @@ function BarChart(props) {
             
             if (bubble.isExpense) {
                 const expenseMonth = moment(bubble.startDate).format('MMM')
-                console.log(expenseMonth)
                 for (let i=0; i<expensesPerMonth.length; i++){
                     if (expensesPerMonth[i].label === expenseMonth){
                         expensesPerMonth[i].value += bubble.cost
@@ -48,28 +36,40 @@ function BarChart(props) {
                 }
             }
         }
-        return expensesPerMonth.map(expense => expense.value)
+        return expensesPerMonth
     }
+    
 
     const data = {
-        // labels: monthsWithExpenses(allBubbles), method 1: only show months included in to do list
         labels: expensesPerMonth.map(month => month.label),
-        datasets: [
-        {
-            label: 'Dataset 1',
-            data:  addMonthlyExpenses(allBubbles), //addMonthlyExpenses(allBubbles),
-            backgroundColor: ['rgba(255, 26, 104, 1)',
-            'rgba(54, 162, 235, 1)', 'rgba(55, 6, 14, 1)'],
 
-        },
-        //   {
-        //     label: 'Dataset 2',
-        //     data: [200, 300],
-        //     backgroundColor: 'rgba(100, 99, 255, 0.5)',
-        //   },
+        datasets: [
+            {
+                label: 'Dataset 1',
+                barThickness: 130,
+                hoverBackgroundColor: 'rgba(255, 255, 255, .4)',
+                data:  addMonthlyExpenses(allBubbles).map(expense => expense.value),
+                backgroundColor: ['rgba(255, 26, 104, .5)',
+                'rgba(54, 162, 235, .5)', 'rgba(55, 6, 14, .5)'],
+                
+            },
         ]
-    };
+        };
     
+    if (filter === "filterExpenseMonths") {
+            data.labels = addMonthlyExpenses(allBubbles).filter(expense=>expense.value > 0).map(expense => expense.label)
+            data.datasets.data = addMonthlyExpenses(allBubbles).filter(expense=>expense.value > 0).map(expense => expense.value)
+    }
+        //     let newObj = {}
+        //     for (let i=0; i<data.labels.length; i++) {
+        //         if (!newObj.hasOwnProperty(data.labels[i])) {
+        //             newObj[data.labels[i]] = data.datasets.data[i]
+        //         }
+        //         data.labels = Object.keys(newObj)
+        //         data.datasets.data = Object.values(newObj)
+        //         console.log( data.datasets.data)
+        //     }
+        // }
     const config = {
         indexAxis: 'x',
         data: data,
@@ -92,7 +92,18 @@ function BarChart(props) {
         },
     };
 
-    return <Bar options={config} data={data} className="graph"/>;
+    return (
+        <div>
+            <div>
+                <Bar options={config} data={data} className="graph"/><br />
+                <select onChange={e => setFilter(e.target.value)}>
+                    <option>None</option>
+                    <option value="filterExpenseMonths">Only Months With Expenses</option>
+                </select>
+            </div>
+
+        </div>
+    );
     }
 
 export default BarChart
