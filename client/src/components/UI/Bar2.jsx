@@ -7,8 +7,7 @@ Chart.register(...registerables);
 
 function BarChart(props) {
     const { allBubbles, filter, setFilter } = props
-    // const [data, setData] = useState(null)
-
+    const [data, setData] = useState(null)
 
 
     const expensesPerMonth = [ 
@@ -59,27 +58,23 @@ function BarChart(props) {
         };
     
     if (filter === "filterExpenseMonths") {
-            data.labels = expensesPerMonth.filter(expense=>expense.value > 0).map(expense => expense.label)
-            data.datasets.data = expensesPerMonth.filter(expense=>parseInt(expense.value) > 0).map(expense => expense.value)
+            data.labels = addMonthlyExpenses(allBubbles).filter(expense=>expense.value > 0).map(expense => expense.label)
+            data.datasets.data = addMonthlyExpenses(allBubbles).filter(expense=>parseInt(expense.value) > 0).map(expense => expense.value)
             // console.log(data.labels)
             // console.log(data.datasets.data)
             // data.datasets.update()
-    
-            let newObj = {}
-            for (let i=0; i<data.labels.length; i++) {
-                    if (!newObj.hasOwnProperty(data.labels[i])) {
-                            newObj[data.labels[i]] = data.datasets.data[i]
-                        }
-                    }
-                data.labels = Object.keys(newObj)
-                data.datasets.data = Object.values(newObj)
-                console.log( "these are the values --->", data.datasets.data)
-                console.log("This is the newObj --->", newObj)
-                }
-    
-    console.log( "these are the original values --->", data.datasets.data)
-    console.log("This is the original labels --->", data.labels)       
-        
+    }
+                // let newObj = {}
+                // for (let i=0; i<data.labels.length; i++) {
+                //         if (!newObj.hasOwnProperty(data.labels[i])) {
+                //                 newObj[data.labels[i]] = data.datasets.data[i]
+                //             }
+                //         }
+                //     data.labels = Object.keys(newObj)
+                //     data.datasets.data = Object.values(newObj)
+                //     console.log( "these are the values --->", data.datasets.data)
+                //     console.log("This is the newObj --->", newObj)
+                //     }
             
     const config = {
         indexAxis: 'x',

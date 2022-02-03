@@ -40,7 +40,7 @@ class UserController {
         res.cookie("usertoken", jwt.sign({_id:""}, secret), {
             httpOnly: true,
             maxAge: 0,
-        }).json({msg})    
+        }).json({msg:"ok"})    
     }
 
     getLoggedInUser(req, res){

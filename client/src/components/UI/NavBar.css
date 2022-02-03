@@ -14,10 +14,14 @@
 
 .p1{
     animation: nav-fade-left 3s;
+    color: #fff0d7;
+    text-decoration: none;
 }
 
 .p2{
     animation: nav-fade-right 3s;
+    color: #fff0d7;
+    text-decoration: none;
 }
 
 
@@ -43,3 +47,4 @@
         opacity: 1;
     }
 }
+
