@@ -4,9 +4,10 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 100%;
+    position: relative;
 }
 
-body {
+html {
     background-image: linear-gradient(to bottom right, #009bf8, #fff0d7);
     /* THE HEIDI background-image: linear-gradient(to bottom right, #d9a3db, #f0c6ad); */
 

@@ -7,6 +7,8 @@ import NavBar from "./components/UI/NavBar";
 import BarChart from "./components/UI/BarChart";
 import LoginRegistrationPage from "./views/LoginRegistrationPage";
 import OnlyTasks from "./components/Bubble/OnlyTasks";
+import CurrencyForm from "./components/CurrencyConverter/CurrencyForm";
+import BubbleInput from "./components/User/BubbleInput";
 
 function App() {
     const [formSubmitted, setFormSubmitted] = useState(false)
@@ -24,7 +26,7 @@ function App() {
                         <LoginRegistrationPage />
                     </Route>
                     <Route exact path="/jeremy">
-                        <BarChart />
+                        <BubbleInput />
                     </Route>
                     <Route exact path="/split">
                         <OnlyTasks />

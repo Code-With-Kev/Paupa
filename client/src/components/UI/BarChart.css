@@ -2,3 +2,56 @@
     width: 30%
 }
 
+.convert-button {
+    padding: 2rem;
+    height: 3rem;
+    margin-left: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.convert-icon{
+    width: 3em;
+    filter: brightness(0) invert(1);
+    transition: all 1s;
+    transform: scale(1)
+}
+
+.chart-icons{
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    width: 100%;
+    min-height: fit-content;
+}
+
+.bar:hover .chart-icons{
+    border: 5px solid black
+}
+
+.currency-form{
+    animation: scale-up 2s forwards
+}
+
+@keyframes scale-up {
+    0% {
+        transform: scale(0)
+    }
+    100% {
+        transform: scale(.75)
+    }
+}
+
+.bar-filter{
+    transform: scale(1);
+    box-shadow: 0px 0px 5px white;
+    transition: all 1s;
+}
+
+.bar-filter:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px white;
+}

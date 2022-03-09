@@ -1,0 +1,150 @@
+.username{
+    position: absolute;
+    top: 19rem;
+    left: 28rem;
+}
+.email{
+    position: absolute;
+    top: 19rem;
+    left: 28rem;
+    transform: rotate(25deg);
+}
+.confirm-email{
+    position: absolute;
+    top: 19rem;
+    left: 28rem;
+    transform: rotate(25deg);
+}
+
+.bubble-email, .bubble-username{
+    transform: translatey(0px);
+	animation: float 6s ease-in-out infinite 3.1s, rotate-in 3s;
+}
+
+.form-heading{
+    border:none;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    font-weight: bold;
+    font-style: italic;
+    color: #fff0d7
+}
+
+.form-input{
+    border: none;
+    outline: none;
+    text-decoration: none;
+    background: none;
+    border-bottom: solid 5pt #fff0d7;
+    padding: .5em;
+    font-size: 1em;
+    color: white;
+    text-align: center
+}
+
+@keyframes float {
+	0% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+	50% {
+		box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+		transform: translatey(-20px);
+	}
+	100% {
+		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		transform: translatey(0px);
+	}
+}
+
+.sub-btn {
+    transform: scale(.5);
+    position: absolute;
+    top:0;
+    left: -3rem;
+}
+
+
+.first-bubble{
+    top: 31rem;
+    left: 10rem;
+    position: absolute;
+    transform: scale(.75);
+}
+.second-bubble{
+    top: 31rem;
+    left: 21rem;
+    position: absolute;
+    transform: scale(.85) rotate(10deg);
+}
+.third-bubble{
+    top: 18rem;
+    left: 18rem;
+    position: absolute;
+    transform: rotate(-20deg);
+}
+.fourth-bubble{
+    top: 38rem;
+    left: 26rem;
+    position: absolute;
+    transform: scale(.75) rotate(-20deg);
+}
+.fifth-bubble{
+    top: 20rem;
+    left: 41rem;
+    position: absolute;
+    transform: scale(1) rotate(12deg);
+}
+
+.submit-bubble-btn{
+    top: 3rem;
+    left: 53rem;
+    position: absolute;
+    transform: scale(1) rotate(12deg);
+    border: none;
+    outline: none;
+    text-decoration: none;;
+}
+
+.login-bubble-2{
+    top: 38rem;
+    left: 26rem;
+    position: absolute;
+    transform: scale(.75) rotate(-20deg);
+}
+
+.login-password-bubble{
+    top: -69rem;
+    left: 72rem;
+    position: absolute;
+    transform: scale(1.4) rotate(12deg);
+}
+
+.login-email-bubble{
+    top: -49rem;
+    left: 58rem;
+    position: absolute;
+    transform: scale(1.4) rotate(12deg);
+}
+
+.login-btn{
+    top: 7rem;
+    left: 79rem;
+    position: absolute;
+    transform: scale(.6) rotate(12deg);
+}
+
+@keyframes rotate-in {
+    from{
+        transform: translateX(-30px) rotate(-270deg);
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px) rotate(0deg);
+        opacity: 1;
+    }
+}

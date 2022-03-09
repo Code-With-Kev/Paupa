@@ -38,7 +38,7 @@ const DashboardPage = (props) => {
         <div>
                 { loggedInUser &&
             <div className="welcome">
-                <div>{loggedInUser && <h1>Welcome back, {loggedInUser.username}</h1>}</div>
+                <div className="welcome-text">{loggedInUser && <h1>Welcome back, {loggedInUser.username}</h1>}</div>
             </div>
                 }
                 <button className="switchTab" onClick={logout} style={{marginRight: "1em"}}><img className="switch-icon" src={require('../components/UI/Images/logout_symbol.png')} /></button>                

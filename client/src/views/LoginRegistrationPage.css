@@ -19,6 +19,22 @@
     margin-bottom: 1em;
 }
 
+.boy {
+    position: absolute;
+    z-index: -1;
+    transform: scale(.5);
+    left: 0;
+    top: 45rem;
+    animation: fade-right 3s ease 3s,
+}
+
+.mini-bubbles{
+    transform: scale(.5);
+    position: absolute;
+    top: 45rem;
+    left: 12rem;
+}
+
 @keyframes fade-right {
     from{
         transform: translateX(-30px);
@@ -28,4 +44,39 @@
         transform: translateX(0px);
         opacity: 1;
     }
+}
+
+.bubble1{
+    transform: scale(.45);
+    position: absolute;
+    left: 12rem;
+    z-index: -1;
+}
+
+.bubble2{
+    transform: scale(.55);
+    position: absolute;
+    left: 12rem;
+    z-index: -1
+}
+
+.bubble-email{
+    position: relative;
+    top:0;
+    left: 0;
+}
+
+.mini-bubbles2 {
+    position: absolute;
+    left:125rem;
+    top:-6rem;
+    transform: scale(.6) rotate(180deg)
+}
+
+.paupa {
+    transform: scale(.2);
+    animation: fade-right 5s ease-out 3s forwards;
+    opacity: 0;
+    animation-delay: 3s;
+    height: 500px;
 }

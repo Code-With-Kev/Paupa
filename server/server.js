@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors =  require("cors");
 const cookies = require("cookie-parser")
+require('dotenv').config();
 
 require("./config/mongoose.config")
 
@@ -11,6 +12,7 @@ app.use( cors({
     credentials: true, origin: 'http://localhost:3000'
 }))
 app.use(cookies());
+
 
 require("./routes/Bubble.routes")(app);
 require("./routes/Expense.routes")(app);

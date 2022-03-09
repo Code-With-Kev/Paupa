@@ -1,15 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import { Bar } from 'react-chartjs-2';
 import { Chart, registerables } from "chart.js";
 import moment from 'moment'
 import './BarChart.css'
+import CurrencyForm from "../CurrencyConverter/CurrencyForm";
 Chart.register(...registerables);
 
 function BarChart(props) {
+    const [ convertMoney, setConvertMoney ] = useState(false)
     const { allBubbles, filter, setFilter } = props
-    // const [data, setData] = useState(null)
-
-
+    const { expectedFilter, setExpectedFilter} = useState(false)
 
     const expensesPerMonth = [ 
         { label: 'Jan', value: 0 },
@@ -45,7 +45,6 @@ function BarChart(props) {
 
     let data = {
         labels: expensesPerMonth.map(month => month.label),
-
         datasets: [
             {
                 label: 'Dataset 1',
@@ -57,24 +56,38 @@ function BarChart(props) {
             },
         ]
         };
+
+    let dataFilter = {
+        labels: addMonthlyExpenses(allBubbles).filter(expense=>expense.value > 0).map(expense => expense.label),
+        datasets: [
+            {
+                label: 'Dataset 1',
+                barThickness: 130,
+                hoverBackgroundColor: 'rgba(255, 255, 255, .4)',
+                data:  addMonthlyExpenses(allBubbles).filter(expense=>expense.value > 0).map(expense => expense.value),
+                backgroundColor: ['rgba(255, 26, 104, .5)',
+                'rgba(54, 162, 235, .5)', 'rgba(55, 6, 14, .5)'],
+            },
+        ]
+        };
     
     if (filter === "filterExpenseMonths") {
-            data.labels = expensesPerMonth.filter(expense=>expense.value > 0).map(expense => expense.label)
-            data.datasets.data = expensesPerMonth.filter(expense=>parseInt(expense.value) > 0).map(expense => expense.value)
+            data.labels = expensesPerMonth.label
+            data.datasets.data = expensesPerMonth.value
             // console.log(data.labels)
             // console.log(data.datasets.data)
             // data.datasets.update()
     
-            let newObj = {}
-            for (let i=0; i<data.labels.length; i++) {
-                    if (!newObj.hasOwnProperty(data.labels[i])) {
-                            newObj[data.labels[i]] = data.datasets.data[i]
-                        }
-                    }
-                data.labels = Object.keys(newObj)
-                data.datasets.data = Object.values(newObj)
-                console.log( "these are the values --->", data.datasets.data)
-                console.log("This is the newObj --->", newObj)
+            // let newObj = {}
+            // for (let i=0; i<data.labels.length; i++) {
+            //         if (!newObj.hasOwnProperty(data.labels[i])) {
+            //                 newObj[data.labels[i]] = data.datasets.data[i]
+            //             }
+            //         }
+            //     data.labels = Object.keys(newObj)
+            //     data.datasets.data = Object.values(newObj)
+            //     console.log( "these are the values --->", data.datasets.data)
+            //     console.log("This is the newObj --->", newObj)
                 }
     
     console.log( "these are the original values --->", data.datasets.data)
@@ -105,14 +118,35 @@ function BarChart(props) {
 
     return (
         <div>
-            <div>
-                <Bar options={config} data={data} className="graph"/><br />
-                <select onChange={e => setFilter(e.target.value)}>
-                    <option>None</option>
-                    <option value="filterExpenseMonths">Only Months With Expenses</option>
-                </select>
-            </div>
+            <div> 
 
+                <div>
+                    {
+                        filter == ""?
+                    
+                        <Bar style={{transform: convertMoney && "scale(.5)", margin: convertMoney && "-15rem 0"}} options={config} data={data} className="graph"/>:
+                        <Bar options={config} style={{transform: convertMoney && "scale(.5)", margin: convertMoney && "-20rem 0"}} data={dataFilter} className="graph"/>
+                    }
+                </div>
+                <div>
+                    {
+                        convertMoney &&
+                        <div className="currency-form">
+                            <CurrencyForm />
+                        </div>
+                    }
+                </div>
+                <div className="chart-icons">
+                    <select className="bar-filter" onChange={e => setFilter(e.target.value)}>
+                        <option value = "">None</option>
+                        <option value="filterExpenseMonths">Only Months With Expenses</option>
+                    </select>
+                    <button className="switchTab convert-button" onClick={(e)=>setConvertMoney(!convertMoney)}>
+                        <img className="convert-icon" src={require('./Images/convert_icon_transparent.png')} />
+                    </button>                
+                </div>
+            </div>
+        
         </div>
     );
     }

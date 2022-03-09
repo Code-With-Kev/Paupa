@@ -258,7 +258,7 @@ input[type="submit"]:hover::before{
 
 .welcome {
     font-style: italic;
-    font-size: .4em;
+    font-size: .5em;
     width: 25em;
     border-radius: 12em;
     padding: .5em;
@@ -278,7 +278,7 @@ input[type="submit"]:hover::before{
 
 .switchTab{
     padding: .2em;
-    width: 3%;
+    width: 5%;
     background: transparent;
     border: none;
     box-shadow: 0px 0px 5px white;
