@@ -1,6 +1,13 @@
 
 
-![crown_gif2](https://user-images.githubusercontent.com/96272858/158074094-841e05ad-2909-4eff-ac2f-2df92ff7193f.gif)
+<p align="center">
+  
+  <img src="https://user-images.githubusercontent.com/96272858/158074094-841e05ad-2909-4eff-ac2f-2df92ff7193f.gif#gh-light-mode-only">
+
+  <img src="https://user-images.githubusercontent.com/96272858/158101451-3c78b071-5cf2-4b23-9304-9101aa7e6233.gif#gh-dark-mode-only">
+
+</p>
+
 
 # Paupa---React
 A full-stack React application (featuring MondoDB, Express, Node.js, Fixer API and Chart JS) serving as a to-do list/expense tracker for people who are grieving and need guidance. My mom really needed help when it came to life after my dad and she had nowhere to go. Therefore, I want the app to guide people through what normal funeral processes costs and help create a timeline for them to get things done so that they can focus on healing themselves and their family. 
@@ -33,7 +40,10 @@ https://user-images.githubusercontent.com/96272858/157377111-22e1860d-5b93-4fab-
 
 ## My Dad
 
+<div align="center">
+
 ![377575_2219020316164_178038187_n](https://user-images.githubusercontent.com/96272858/158074238-9132911c-c001-4d90-ab20-884afe54e9a1.jpg)
 
 Eugene Richard Woodside was someone who grew up poor and in the roughest neighborhoods of Florida. He was someone who was willing to do anything to make sure his kids didn't have the childhood he did. He raised us to love everyone and volunteered his time to mentor elementary school kids who weren't as lucky as we were to have a dad like him. He loved me no matter who I was and made sure I never felt alone. And I'll be sure to do the same with my children, Dad. 
 
+</div>
